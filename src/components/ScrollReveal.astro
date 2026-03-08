@@ -1,0 +1,46 @@
+---
+/**
+ * Scroll reveal script — observes `.reveal` elements and adds `.visible` class
+ * with staggered delays for child elements
+ */
+---
+
+<script>
+  function initReveal() {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach((el, i) => {
+        // Add staggered delay based on sibling index within parent
+        const parent = el.parentElement;
+        if (parent) {
+          const siblings = Array.from(parent.querySelectorAll(':scope > .reveal'));
+          const idx = siblings.indexOf(el);
+          if (idx > 0) {
+            el.style.transitionDelay = `${idx * 0.1}s`;
+          }
+        }
+        observer.observe(el);
+      });
+    } else {
+      document.querySelectorAll('.reveal').forEach((el) => {
+        el.classList.add('visible');
+      });
+    }
+  }
+
+  // Support both regular page load and Astro page transitions
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReveal);
+  } else {
+    initReveal();
+  }
+  document.addEventListener('astro:page-load', initReveal);
+</script>

@@ -1,0 +1,122 @@
+---
+const mapsLink = 'https://maps.google.com/?cid=8466421730057760274';
+const waLink = 'https://wa.me/628892286721?text=Halo%20Ratu%20Massage%2C%20saya%20ingin%20booking%20massage%20panggilan.%20Bisa%20info%20jadwal%20%26%20harganya%3F';
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="/assets/logo-original.jpg" alt="Ratu Massage & Beauty" width="48" height="48" />
+        <p>Layanan massage panggilan profesional 24 jam di Bogor. Panggilan 24 Jam &mdash; Bogor & Sekitarnya.</p>
+      </div>
+      <nav class="footer-col" aria-label="Navigasi footer">
+        <h4>Navigasi</h4>
+        <a href="#layanan">Layanan</a>
+        <a href="#cara-pesan">Cara Pesan</a>
+        <a href="#testimoni">Testimoni</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+      <div class="footer-col">
+        <h4>Kontak</h4>
+        <a href={waLink} target="_blank" rel="noopener noreferrer">0889-2286-721</a>
+        <a href={mapsLink} target="_blank" rel="noopener noreferrer">Google Maps</a>
+        <a href="#">Bogor, Jawa Barat</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Ratu Massage & Beauty. All rights reserved.</span>
+      <a href={mapsLink} target="_blank" rel="noopener noreferrer">5.0 &#9733; di Google</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--black);
+    padding: 56px 0 32px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 32px;
+  }
+  .footer-brand img {
+    height: 48px;
+    width: 48px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+    box-shadow: 0 2px 10px rgba(212,165,74,0.3);
+  }
+  .footer-brand p {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    max-width: 300px;
+  }
+  .footer-col h4 {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.6);
+    padding: 5px 0;
+    transition: color 0.2s ease;
+  }
+  .footer-col a:hover,
+  .footer-col a:focus-visible {
+    color: var(--gold);
+  }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+  }
+  .footer-bottom a {
+    color: rgba(255,255,255,0.4);
+    transition: color 0.2s;
+  }
+  .footer-bottom a:hover,
+  .footer-bottom a:focus-visible {
+    color: var(--gold);
+  }
+
+  @media (max-width: 900px) {
+    .footer {
+      padding: 40px 0 28px;
+    }
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      padding-bottom: 28px;
+      margin-bottom: 24px;
+    }
+    .footer-brand p {
+      max-width: 100%;
+    }
+    .footer-col h4 {
+      margin-bottom: 12px;
+    }
+  }
+  @media (max-width: 768px) {
+    .footer-bottom {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+</style>

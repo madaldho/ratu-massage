@@ -1,0 +1,109 @@
+---
+const features = [
+  {
+    title: 'Tersedia 24 Jam',
+    desc: 'Layanan nonstop setiap hari, termasuk hari libur dan tanggal merah.',
+    icon: 'clock',
+  },
+  {
+    title: 'Terapis Profesional',
+    desc: 'Bersertifikat resmi dengan pengalaman minimal 3 tahun di industri spa.',
+    icon: 'user',
+  },
+  {
+    title: 'Seluruh Area Bogor',
+    desc: 'Melayani seluruh Bogor dan sekitarnya tanpa biaya transportasi tambahan.',
+    icon: 'location',
+  },
+];
+---
+
+<section class="features">
+  <div class="container">
+    <div class="features-grid">
+      {features.map((f) => (
+        <div class="feature-item reveal">
+          <div class="feature-icon">
+            {f.icon === 'clock' && (
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            )}
+            {f.icon === 'user' && (
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg>
+            )}
+            {f.icon === 'location' && (
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            )}
+          </div>
+          <h3>{f.title}</h3>
+          <p>{f.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features {
+    padding: 56px 0;
+    background: var(--white);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .feature-item {
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .feature-item:hover {
+    transform: translateY(-6px);
+  }
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+  .feature-item:hover .feature-icon {
+    transform: scale(1.15);
+  }
+  .feature-icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--gold);
+    stroke-width: 1.5;
+    fill: none;
+  }
+  .feature-item h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .feature-item p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .features {
+      padding: 40px 0;
+    }
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 28px;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    .feature-item h3 {
+      font-size: 1.05rem;
+    }
+    .feature-item p {
+      font-size: 0.82rem;
+    }
+  }
+</style>

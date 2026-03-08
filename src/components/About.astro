@@ -1,0 +1,104 @@
+---
+const qualifications = [
+  'Sertifikasi resmi dari lembaga pelatihan',
+  'Pengalaman minimal 3 tahun di industri spa',
+  'Menguasai berbagai teknik pijat profesional',
+  'Ramah, sopan, dan menjaga kenyamanan klien',
+];
+---
+
+<section class="section section--cream" id="tentang">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=540&h=500&fit=crop&crop=faces" alt="Terapis profesional Ratu Massage & Beauty" loading="lazy" width="540" height="500" />
+      </div>
+      <div class="about-content reveal">
+        <div class="section-label">Tentang Kami</div>
+        <h2>Terapis Berpengalaman &amp; Bersertifikat</h2>
+        <p>Setiap terapis Ratu Massage &amp; Beauty telah melewati seleksi ketat dan pelatihan intensif. Kami memastikan Anda mendapatkan perawatan terbaik dari profesional yang memahami seni pijat dan relaksasi.</p>
+        <ul class="about-list">
+          {qualifications.map((q) => (
+            <li>
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              {q}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .about-img {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .about-img img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .about-content .section-label {
+    text-align: left;
+  }
+  .about-content h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 20px;
+  }
+  .about-content p {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  .about-list {
+    margin-top: 24px;
+  }
+  .about-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: var(--black);
+  }
+  .about-list li svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--gold);
+    stroke-width: 2;
+    fill: none;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .about-img img {
+      height: 320px;
+    }
+    .about-content h2 {
+      font-size: 1.5rem;
+    }
+    .about-content p {
+      font-size: 0.88rem;
+    }
+    .about-list {
+      margin-top: 16px;
+    }
+    .about-list li {
+      font-size: 0.85rem;
+      padding: 6px 0;
+    }
+  }
+</style>

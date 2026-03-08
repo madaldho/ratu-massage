@@ -1,0 +1,95 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+}
+
+const {
+  title,
+  description,
+  canonicalURL = 'https://ratumassagebogor.com',
+} = Astro.props;
+
+const ogTitle = title;
+const ogDescription = description;
+const siteURL = 'https://ratumassagebogor.com';
+---
+
+<!doctype html>
+<html lang="id" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="massage panggilan bogor, pijat panggilan 24 jam bogor, spa panggilan bogor, massage ke rumah bogor, ratu massage bogor" />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={ogTitle} />
+  <meta property="og:description" content={ogDescription} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={siteURL} />
+  <meta property="og:image" content={`${siteURL}/assets/hero-massage.png`} />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:site_name" content="Ratu Massage & Beauty" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={ogTitle} />
+  <meta name="twitter:description" content={ogDescription} />
+  <meta name="twitter:image" content={`${siteURL}/assets/hero-massage.png`} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/logo-original.jpg" />
+  <link rel="apple-touch-icon" href="/assets/logo-original.jpg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <script is:inline>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+  <slot />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Ratu Massage & Beauty",
+    "description": "Layanan massage panggilan profesional 24 jam di Bogor. Terapis bersertifikat datang ke rumah & hotel Anda.",
+    "url": "https://ratumassagebogor.com",
+    "telephone": "+628892286721",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jl. Raya Pajajaran, RT.01/RW.04, Babakan",
+      "addressLocality": "Bogor Tengah",
+      "addressRegion": "Jawa Barat",
+      "postalCode": "16129",
+      "addressCountry": "ID"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -6.59,
+      "longitude": 106.81
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "15"
+    },
+    "priceRange": "Rp150.000 - Rp350.000"
+  })} />
+</body>
+</html>

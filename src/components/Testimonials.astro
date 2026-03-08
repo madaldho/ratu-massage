@@ -1,0 +1,106 @@
+---
+const testimonials = [
+  {
+    quote: 'Terapisnya sangat profesional dan ramah. Saya pesan jam 11 malam dan mereka tetap datang tepat waktu. Rasanya seperti punya spa pribadi di rumah.',
+    author: 'Ibu Ratna Dewi',
+    location: 'Bogor Tengah',
+  },
+  {
+    quote: 'Aromatherapy-nya benar-benar membuat rileks setelah seminggu kerja keras. Essential oil yang dipakai wanginya mewah. Terapis mengerti titik-titik pegal tanpa diberitahu.',
+    author: 'Bapak Andi Pratama',
+    location: 'Sentul',
+  },
+  {
+    quote: 'Couple massage-nya luar biasa. Dua terapisnya sama-sama ahli dan suasananya dibuat sangat nyaman. Sangat recommended untuk quality time berdua.',
+    author: 'Ibu Sari Mulyani',
+    location: 'Cibinong',
+  },
+];
+---
+
+<section class="section section--cream" id="testimoni">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Testimoni</div>
+      <h2 class="section-title">Kata Pelanggan Kami</h2>
+      <p class="section-desc">Rating 5.0 dari 15 ulasan di Google Maps.</p>
+    </div>
+    <div class="testi-grid">
+      {testimonials.map((t) => (
+        <div class="testi-card reveal">
+          <div class="testi-stars" aria-label="5 dari 5 bintang">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote class="testi-quote">&ldquo;{t.quote}&rdquo;</blockquote>
+          <div class="testi-author">{t.author}</div>
+          <div class="testi-loc">{t.location}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .testi-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 28px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .testi-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+  }
+  .testi-stars {
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .testi-quote {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--black);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 400;
+    border: none;
+    padding: 0;
+  }
+  .testi-author {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--black);
+  }
+  .testi-loc {
+    font-size: 0.78rem;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 900px) {
+    .testi-grid {
+      grid-template-columns: 1fr;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      gap: 20px;
+    }
+  }
+  @media (max-width: 768px) {
+    .testi-card {
+      padding: 24px;
+    }
+    .testi-quote {
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .testi-stars {
+      margin-bottom: 12px;
+    }
+  }
+</style>

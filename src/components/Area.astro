@@ -1,0 +1,56 @@
+---
+const areas = [
+  'Bogor Tengah', 'Bogor Utara', 'Bogor Selatan',
+  'Bogor Timur', 'Bogor Barat', 'Tanah Sareal',
+  'Cibinong', 'Sentul', 'Puncak',
+  'Gunung Putri', 'Citeureup', 'Dramaga',
+];
+---
+
+<section class="section section--white" id="area">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Area Layanan</div>
+      <h2 class="section-title">Melayani Seluruh Bogor</h2>
+      <p class="section-desc">Terapis kami siap datang ke lokasi Anda tanpa biaya transportasi tambahan.</p>
+    </div>
+    <div class="area-tags reveal">
+      {areas.map((a) => (
+        <span class="area-tag">{a}</span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .area-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .area-tag {
+    padding: 10px 24px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--black);
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  .area-tag:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(212, 165, 74, 0.08);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 480px) {
+    .area-tags { gap: 8px; }
+    .area-tag {
+      padding: 8px 18px;
+      font-size: 0.78rem;
+    }
+  }
+</style>

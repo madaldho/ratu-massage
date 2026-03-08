@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Services from '../components/Services.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import About from '../components/About.astro';
+
+import Testimonials from '../components/Testimonials.astro';
+import Area from '../components/Area.astro';
+import FAQ from '../components/FAQ.astro';
+import Contact from '../components/Contact.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import ScrollReveal from '../components/ScrollReveal.astro';
+---
+
+<BaseLayout
+  title="Ratu Massage & Beauty — Massage Panggilan 24 Jam Bogor"
+  description="Ratu Massage & Beauty — layanan massage panggilan 24 jam di Bogor. Terapis profesional bersertifikat datang ke rumah & hotel Anda. Pijat tradisional, aromatherapy, refleksi, couple massage."
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <Features />
+    <Services />
+    <HowItWorks />
+    <About />
+    <Testimonials />
+    <Area />
+    <FAQ />
+    <Contact />
+    <FinalCTA />
+  </main>
+  <Footer />
+  <WhatsAppFloat />
+  <ScrollReveal />
+</BaseLayout>

@@ -1,0 +1,134 @@
+---
+const faqs = [
+  {
+    q: 'Apakah benar layanan tersedia 24 jam?',
+    a: 'Ya, Ratu Massage & Beauty beroperasi 24 jam nonstop, 7 hari seminggu termasuk hari libur. Anda bisa memesan layanan kapan pun, baik pagi, siang, malam, maupun dini hari.',
+  },
+  {
+    q: 'Berapa lama waktu kedatangan terapis?',
+    a: 'Umumnya terapis tiba dalam 30-60 menit setelah konfirmasi booking, tergantung jarak lokasi. Anda juga bisa menjadwalkan booking untuk waktu tertentu.',
+  },
+  {
+    q: 'Apakah ada biaya transportasi tambahan?',
+    a: 'Tidak ada biaya tambahan untuk area Bogor Kota. Untuk wilayah sekitar Bogor, mungkin ada sedikit biaya tambahan yang akan dikonfirmasi saat booking.',
+  },
+  {
+    q: 'Metode pembayaran apa saja yang diterima?',
+    a: 'Kami menerima pembayaran tunai dan transfer bank. Pembayaran dilakukan setelah sesi massage selesai.',
+  },
+  {
+    q: 'Apakah bisa booking untuk di hotel?',
+    a: 'Tentu bisa. Terapis kami melayani di rumah, hotel, villa, apartemen, dan kost. Cukup informasikan alamat lengkap saat booking.',
+  },
+  {
+    q: 'Berapa durasi setiap sesi massage?',
+    a: 'Durasi standar setiap sesi adalah 60 menit. Anda bisa menambah durasi menjadi 90 atau 120 menit dengan biaya tambahan. Hubungi kami untuk detail harga.',
+  },
+];
+---
+
+<section class="section section--cream" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Pertanyaan Umum</h2>
+    </div>
+    <div class="faq-list">
+      {faqs.map((faq, i) => (
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false" aria-controls={`faq-answer-${i}`}>
+            <span>{faq.q}</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id={`faq-answer-${i}`} role="region">
+            <div class="faq-answer-inner">{faq.a}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-list {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .faq-item {
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+  }
+  .faq-question {
+    width: 100%;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    cursor: pointer;
+  }
+  .faq-question:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+  .faq-icon {
+    font-size: 1.1rem;
+    color: var(--gold);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+  .faq-answer-inner {
+    padding: 0 0 20px;
+    font-size: 0.88rem;
+    line-height: 1.8;
+  }
+</style>
+
+<script>
+  function initFAQ() {
+    document.querySelectorAll('.faq-question').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        if (!item) return;
+        const answer = item.querySelector('.faq-answer') as HTMLElement;
+        if (!answer) return;
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach((openItem) => {
+          openItem.classList.remove('open');
+          const openAnswer = openItem.querySelector('.faq-answer') as HTMLElement;
+          if (openAnswer) openAnswer.style.maxHeight = '';
+          openItem.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked (if it was closed)
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFAQ);
+  } else {
+    initFAQ();
+  }
+  document.addEventListener('astro:page-load', initFAQ);
+</script>

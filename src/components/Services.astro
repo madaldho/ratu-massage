@@ -1,0 +1,167 @@
+---
+const services = [
+  {
+    title: 'Pijat Tradisional',
+    desc: 'Teknik pijat warisan Nusantara yang efektif meredakan pegal dan melancarkan peredaran darah.',
+    price: 'Rp150.000',
+    img: '/assets/service-traditional.png',
+    waText: 'Halo%2C%20saya%20mau%20booking%20Pijat%20Tradisional.%20Bisa%20info%20jadwal%20%26%20harganya%3F',
+  },
+  {
+    title: 'Aromatherapy Massage',
+    desc: 'Perpaduan pijat lembut dengan essential oil premium untuk relaksasi pikiran dan tubuh.',
+    price: 'Rp200.000',
+    img: '/assets/service-aroma.png',
+    waText: 'Halo%2C%20saya%20mau%20booking%20Aromatherapy%20Massage.%20Bisa%20info%20jadwal%20%26%20harganya%3F',
+  },
+  {
+    title: 'Refleksi',
+    desc: 'Terapi titik-titik refleksi pada kaki dan tangan untuk menyeimbangkan fungsi organ tubuh.',
+    price: 'Rp150.000',
+    img: '/assets/service-refleksi.png',
+    waText: 'Halo%2C%20saya%20mau%20booking%20Refleksi.%20Bisa%20info%20jadwal%20%26%20harganya%3F',
+  },
+  {
+    title: 'Couple Massage',
+    desc: 'Nikmati momen relaksasi bersama pasangan dengan dua terapis profesional secara bersamaan.',
+    price: 'Rp350.000',
+    img: '/assets/service-couple.png',
+    waText: 'Halo%2C%20saya%20mau%20booking%20Couple%20Massage.%20Bisa%20info%20jadwal%20%26%20harganya%3F',
+  },
+];
+---
+
+<section class="section section--cream" id="layanan">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Layanan</div>
+      <h2 class="section-title">Perawatan Terbaik untuk Anda</h2>
+      <p class="section-desc">Setiap sesi dirancang untuk memberikan relaksasi mendalam dan pemulihan tubuh secara menyeluruh.</p>
+    </div>
+    <div class="services-grid">
+      {services.map((s) => (
+        <div class="service-card reveal">
+          <div class="service-card-img">
+            <img src={s.img} alt={s.title} loading="lazy" width="540" height="360" />
+          </div>
+          <div class="service-card-body">
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+            <div class="service-meta">
+              <span class="service-price">{s.price} <small>/sesi</small></span>
+              <a href={`https://wa.me/628892286721?text=${s.waText}`} class="btn-book" target="_blank" rel="noopener noreferrer">Booking</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .service-card {
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .service-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+  }
+  .service-card-img {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3 / 2;
+  }
+  .service-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover .service-card-img img {
+    transform: scale(1.03);
+  }
+  .service-card-body {
+    padding: 24px;
+  }
+  .service-card-body h3 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+  }
+  .service-card-body p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 18px;
+  }
+  .service-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .service-price {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--black);
+  }
+  .service-price small {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--gray);
+  }
+  .btn-book {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--black);
+    color: var(--black);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background: none;
+  }
+  .btn-book:hover,
+  .btn-book:focus-visible {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(212, 165, 74, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      gap: 24px;
+    }
+    .service-card-body {
+      padding: 20px;
+    }
+    .service-card-body h3 {
+      font-size: 1.1rem;
+    }
+    .service-price {
+      font-size: 1rem;
+    }
+    .btn-book {
+      padding: 7px 16px;
+      font-size: 0.72rem;
+    }
+  }
+</style>
