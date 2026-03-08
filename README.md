@@ -1,6 +1,7 @@
 # ratu-massage
 
 Landing page Astro untuk layanan massage panggilan Ratu Massage & Beauty di Bogor.
+Live site: https://ratu-massage.vercel.app
 
 ## Tech Stack
 
@@ -31,9 +32,9 @@ public/
 
 ## Deployment
 
-- GitHub repository: akan di-push sebagai `ratu-massage`
+- GitHub repository: https://github.com/madaldho/ratu-massage
 - Vercel project: `ratu-massage`
-- Production URL: akan diisi setelah deploy Vercel selesai
+- Production URL: https://ratu-massage.vercel.app
 
 ## Catatan
 
